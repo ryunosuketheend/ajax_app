@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all #すべてのレコードを@postに代入
+    @posts = Post.all.order(id: "DESC") #すべてのレコードを@postに代入
   end
 
   def new
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   end
 
   def checked
-    post = Post.find(arams[:id])
+    post = Post.find(params[:id])
     if post.checked
       post.update(checked: false)
     else
